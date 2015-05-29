@@ -10,8 +10,20 @@ package abstraccion;
  * @author T-107
  */
 public class Imc {
-    float peso;
-    float altura;
+    
+    
+    private float peso;
+    private float altura;
+    private boolean flaco;
+    
+    
+    
+    
+    public Imc (){
+        
+    }
+    
+   
     
     public Imc(float p, float a){
         peso=p;
@@ -22,5 +34,29 @@ public class Imc {
         float imc=peso/(altura*altura);
         return "Tu imc es: "+imc;
     }
-        
+    
+    public void setPeso (float peso){
+        this.peso=peso;
+    }
+    
+    public void setAltura (float altura){
+        this.altura=altura;
+    }
+    
+    public float getPeso(){
+        return peso; 
+    }
+    
+    public float getAltura(){
+        return altura;
+    }
+    
+     public void istFlaco (boolean flaco){
+    }
+    
+    public boolean getFlaco(){
+        return flaco;
+    }
+
+   
 }
