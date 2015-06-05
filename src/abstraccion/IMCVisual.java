@@ -124,10 +124,10 @@ public class IMCVisual extends javax.swing.JFrame {
         // TODO add your handling code here:
         Float peso=new Float(textoPeso.getText());
         Float altura=new Float(textoAltura.getText());
-        
+
         Imc nose=new Imc(peso, altura);
-        etiquetaResultado.setText(" "+nose.calcular()); 
-        
+        etiquetaResultado.setText(" "+nose.calcular());
+
     }//GEN-LAST:event_botonCalcularActionPerformed
 
     private void textoPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPesoActionPerformed
