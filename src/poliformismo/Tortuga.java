@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package herencia;
+package poliformismo;
 
 /**
  *
  * @author T-107
  */
-public interface ComportamientoRuido {
-   
-    public String hcerRuido();
+public class Tortuga extends Animal {
+    
 }

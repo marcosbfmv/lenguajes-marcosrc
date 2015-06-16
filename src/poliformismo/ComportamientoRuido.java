@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package herencia;
+package poliformismo;
 
 /**
  *
  * @author T-107
  */
-public class Delfin extends Animal implements ComportamientoRuido{
-
-    @Override
-    public String hcerRuido() {
-      return"shiiii!!";
-    }
-    
+public interface ComportamientoRuido {
+   
+    public String hcerRuido();
 }
