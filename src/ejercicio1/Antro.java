@@ -22,7 +22,15 @@ public class Antro {
         Usuario use=new Usuario("juan",42,"jcampo@gamail.com",d1);
         
         System.out.println(use.getDireccion().getMunicipio());
-                
+        
+        Bebida bebida=new Bebida();
+        bebida.setTipo("Si_alcholicas");
+        String []reco=bebida.obternerRecomendaciones();
+                for(String be:reco){
+                    
+                    System.out.println("Bebida:"+be);
+                    
+                }
     }
     
 }
