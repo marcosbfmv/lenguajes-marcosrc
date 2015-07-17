@@ -5,6 +5,10 @@
  */
 package collections;
 
+import java.util.Collections;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author T-107
@@ -122,12 +126,14 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         jTabbedPane1.addTab("Agregar Usuario", jPanel1);
 
         botonCargarusuarios.setText("Cargar Usuarios");
+        botonCargarusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarusuariosActionPerformed(evt);
+            }
+        });
 
         tablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -141,14 +147,13 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(94, 94, 94)
+                .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +183,33 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
     private void textoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoEmailActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_textoEmailActionPerformed
+
+    private void botonCargarusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarusuariosActionPerformed
+        // TODO add your handling code here:
+        
+        GeneradorDeUsuarios gen=new GeneradorDeUsuarios();
+        List<Usuario> usuarios= gen.getUsuarios();
+
+        Collections.sort(usuarios, new UsuarioPorNombres());
+                
+                
+        tablaUsuario.setModel(new DefaultTableModel(new String[]{"nombre","edad","email"}, gen.getUsuarios().size()));
+        
+        int fila=0;
+        for(Usuario u:gen.getUsuarios()){
+            tablaUsuario.setValueAt(u.getNombre(), fila, 0);
+            tablaUsuario.setValueAt(u.getEdad(), fila, 1);
+            tablaUsuario.setValueAt(u.getEmail(), fila, 2);
+            fila++;
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_botonCargarusuariosActionPerformed
 
     /**
      * @param args the command line arguments

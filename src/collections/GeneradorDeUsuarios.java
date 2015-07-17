@@ -17,7 +17,7 @@ public class GeneradorDeUsuarios {
     private List<Usuario> usuarios;
     
     public GeneradorDeUsuarios(){
-        Usuario u1=new Usuario("juan", 42, "jc@gamail.com");
+        Usuario u1=new Usuario("Juan", 42, "jc@gamail.com");
         Usuario u2=new Usuario("Ana", 22, "anan@gamail.com");
         Usuario u3=new Usuario("Pedro", 33, "pedro@yahoo.com");
         Usuario u4=new Usuario("Pancha", 60, "pancha@hotmail.com");
