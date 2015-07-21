@@ -20,6 +20,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     public InterfaceUsuario() {
         initComponents();
+        botonCargarusuarios.setEnabled(false);
     }
 
     /**
@@ -33,6 +34,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         textoNombre = new javax.swing.JTextField();
@@ -46,6 +48,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         botonCargarusuarios = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuario = new javax.swing.JTable();
+        comboSeleccion = new javax.swing.JComboBox();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,6 +62,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,25 +147,37 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaUsuario);
 
+        comboSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordenar por nombre ", "Ordenar por edad " }));
+        comboSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSeleccionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(comboSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCargarusuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -193,7 +210,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         GeneradorDeUsuarios gen=new GeneradorDeUsuarios();
         List<Usuario> usuarios= gen.getUsuarios();
 
-        Collections.sort(usuarios, new UsuarioPorNombres());
+        Collections.sort(usuarios, new UsuarioPorEdad());
                 
                 
         tablaUsuario.setModel(new DefaultTableModel(new String[]{"nombre","edad","email"}, gen.getUsuarios().size()));
@@ -210,6 +227,14 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_botonCargarusuariosActionPerformed
+
+    private void comboSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSeleccionActionPerformed
+        // TODO add your handling code here:
+        
+        botonCargarusuarios.setEnabled(true);
+        int indice=comboSeleccion.getSelectedIndex();
+        
+    }//GEN-LAST:event_comboSeleccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +274,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCargarusuarios;
     private javax.swing.JButton botonGuardar;
+    private javax.swing.JComboBox comboSeleccion;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
